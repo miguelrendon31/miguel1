@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EduViajes — Proyecto 11-2</title>
+  <meta name="description" content="EduViajes: proyecto del grado 11-2. Viajes institucionales como experiencia educativa.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#2196F3;
+      --accent:#1E88E5;
+      --bg:#f7f9fb;
+      --card:#ffffff;
+      --muted:#666;
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;line-height:1.5;background:var(--bg);color:#111}
+    a{text-decoration:none}
+    img{max-width:100%;display:block;border-radius:10px}
+    h2{font-size:26px;margin-bottom:10px}
+    p{margin-bottom:10px}
+
+    /* HEADER FIJO */
+    header{
+      position:sticky;top:0;z-index:99;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      color:#fff;padding:10px 18px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-radius:0 0 18px 18px;box-shadow:0 3px 10px rgba(0,0,0,0.1)
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+    header h1{font-size:18px;margin:0}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:rgba(255,255,255,0.15);border:0;padding:6px 10px;border-radius:8px;color:white;font-weight:600;transition:all .3s}
+    .btn:hover{background:white;color:var(--accent)}
+
+    .container{max-width:var(--maxw);margin:auto;padding:20px}
+
+    /* HERO */
+    .hero{
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop') center/cover;
+      color:white;padding:80px 20px;border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,0.2);margin-bottom:30px
+    }
+    .hero-text{max-width:520px}
+    .hero h2{font-size:32px;margin-bottom:10px}
+    .hero p{color:#eaeaea;font-weight:300}
+    .cta{display:flex;gap:12px;margin-top:14px}
+    .primary{background:#fff;color:var(--accent);padding:10px 14px;border-radius:10px;font-weight:700;border:0;transition:all .3s}
+    .secondary{background:transparent;border:2px solid #fff;color:white;padding:8px 12px;border-radius:10px;transition:all .3s}
+    .primary:hover{background:var(--accent);color:#fff}
+    .secondary:hover{background:white;color:var(--accent)}
+
+    /* CARD GENÉRICA */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(15,20,30,0.06);transition:transform .2s}
+    .card:hover{transform:translateY(-4px)}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* EQUIPO */
+    .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
+    .member{background:linear-gradient(180deg,#fff,#f8fbff);padding:12px;border-radius:12px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+    .avatar{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--primary));display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;margin-bottom:8px}
+    .member h4{margin:4px 0;font-size:14px;text-transform:capitalize}
+    .role{font-size:13px;color:var(--muted)}
+
+    /* GALERÍA */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:12px}
+    .photo{height:180px;border-radius:10px;background-size:cover;background-position:center;box-shadow:0 6px 14px rgba(10,20,30,0.06);transition:transform .2s}
+    .photo:hover{transform:scale(1.03)}
+
+    /* VIDEOS */
+    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:12px}
+    .video{background:#fff;padding:8px;border-radius:10px}
+    iframe{width:100%;height:220px;border-radius:8px;border:0}
+
+    /* TESTIMONIOS */
+    .testimonios{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:16px}
+    .testimonio{background:white;padding:14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+    .testimonio p{font-style:italic;color:#444}
+    .autor{margin-top:8px;font-weight:600;color:var(--accent)}
+
+    /* FORMULARIO */
+    form{display:grid;gap:10px;margin-top:12px}
+    input,textarea{padding:10px;border:1px solid #ccc;border-radius:8px;font-family:'Poppins';width:100%}
+    button{background:var(--primary);color:white;border:0;padding:10px;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s}
+    button:hover{background:var(--accent)}
+
+    /* FOOTER */
+    footer{text-align:center;color:var(--muted);font-size:14px;padding:18px;margin-top:24px;border-top:1px solid #ddd}
+
+    /* RESPONSIVE */
+    @media(max-width:700px){
+      .hero{flex-direction:column;text-align:center}
+      .cta{justify-content:center}
+      .hero h2{font-size:26px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="brand">
+      <div class="logo">EV</div>
+      <h1>EduViajes — 11-2</h1>
+    </div>
+    <nav>
+      <a class="btn" href="#inicio">Inicio</a>
+      <a class="btn" href="#equipo">Equipo</a>
+      <a class="btn" href="#marco">Metodología</a>
+      <a class="btn" href="#impacto">Impacto</a>
+      <a class="btn" href="#evidencias">Evidencias</a>
+      <a class="btn" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- INICIO -->
+    <section id="inicio" class="hero">
+      <div class="hero-text">
+        <h2>EduViajes: Aprendiendo fuera del aula</h2>
+        <p>Cada salida institucional es una oportunidad para conectar el conocimiento con la experiencia, fortalecer la convivencia y vivir aprendizajes reales.</p>
+        <div class="cta">
+          <a class="primary" href="#marco">Conocer más</a>
+          <a class="secondary" href="#evidencias">Ver evidencias</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo">
+      <h2>Nuestro equipo</h2>
+      <p class="muted">Estudiantes líderes del grado 11-2 comprometidos con el aprendizaje experiencial.</p>
+      <div class="team">
+        <div class="member"><div class="avatar">Mr</div><h4>Miguel Rendón</h4><div class="role">Coordinador del proyecto</div></div>
+        <div class="member"><div class="avatar">Vv</div><h4>Valentina Valencia</h4><div class="role">Diseñadora y redactora</div></div>
+        <div class="member"><div class="avatar">Lc</div><h4>Lisa Castañeda</h4><div class="role">Editor audiovisual</div></div>
+        <div class="member"><div class="avatar">Lv</div><h4>Lina Valencia</h4><div class="role">Investigación</div></div>
+        <div class="member"><div class="avatar">Sm</div><h4>Sergio Morales</h4><div class="role">Presentación</div></div>
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section id="marco">
+      <h2>Marco teórico y metodología</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Marco teórico</h3>
+          <p>El aprendizaje experiencial afirma que la educación mejora cuando se combina la observación con la práctica directa. Los viajes institucionales son espacios ideales para aplicar conocimientos, convivir y fortalecer habilidades ciudadanas.</p>
+        </div>
+        <div class="card">
+          <h3>Metodología</h3>
+          <p>El proyecto se desarrolla en cinco fases: planeación, investigación, ejecución del viaje, registro de evidencias y análisis de resultados. Todo el grupo participa en roles asignados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACTO -->
+    <section id="impacto">
+      <h2>Impacto educativo</h2>
+      <div class="grid">
+        <div class="card"><h3>+80%</h3><p class="muted">De los estudiantes afirman haber mejorado su convivencia y trabajo en equipo.</p></div>
+        <div class="card"><h3>+90%</h3><p class="muted">Muestran mayor interés por temas ambientales y culturales.</p></div>
+        <div class="card"><h3>100%</h3><p class="muted">Consideran los viajes como experiencias de aprendizaje real y motivadora.</p></div>
+      </div>
+    </section>
+
+  <!-- dentro de <section id="evidencias"> -->
+<h3 style="margin-top:16px">Videos</h3>
+<div class="videos">
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/7pGo-XTRQKg" title="Viaje institucional a Agra"></iframe>
+    <p class="muted">historia de las excursiones escolares.</p>
+  </div>
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/7X4XUaE23VI" title="Gestión de riesgos en viajes institucionales"></iframe>
+    <p class="muted">el turismo es un mundo de posibilidades.</p>
+  </div>
+   <div class="video">
+    <iframe src="https://www.youtube.com/embed/iq4NxrczHjY" title="Gestión de riesgos en viajes institucionales"></iframe>
+    <p class="muted">viajes escolares.</p>
+  </div>
+   <div class="video">
+    <iframe src="https://www.youtube.com/embed/Nsw4lSihqls" title="Gestión de riesgos en viajes institucionales"></iframe>
+    <p class="muted">viajes formativo e institucional.</p>
+  </div>
+</div>
+
+
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <h2>Testimonios</h2>
+      <div class="testimonios">
+        <div class="testimonio">
+          <p>“Fue una experiencia que me permitió aprender fuera del aula y conocer mejor a mis compañeros.”</p>
+          <div class="autor">— Lina Valencia</div>
+        </div>
+        <div class="testimonio">
+          <p>“EduViajes me enseñó que la convivencia y el trabajo en equipo son tan importantes como las materias.”</p>
+          <div class="autor">— Sergio Morales</div>
+        </div>
+        <div class="testimonio">
+          <p>“Aprendí más sobre el medio ambiente mientras compartíamos experiencias únicas.”</p>
+          <div class="autor">— Valentina Valencia</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2>Contacto y retroalimentación</h2>
+      <p>¿Tienes sugerencias o quieres participar en próximas versiones de EduViajes? Escríbenos aquí:</p>
+      <form onsubmit="event.preventDefault();alert('¡Gracias por tu mensaje!');this.reset();">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Tu correo" required>
+        <textarea rows="4" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
+
+    <footer>
+      Proyecto EduViajes — Grado 11-2 • I.E. Sol de Oriente • 2025
+    </footer>
+  </main>
+</body>
+</html>
